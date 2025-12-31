@@ -4,53 +4,16 @@ df = pd.read_csv('2025-12-21_transaction_download.csv')
 
 category = df.Category
 
-print("Other Services:")
-print(df.loc[df['Category'] == 'Other Services',:])
+columns1 = ['Transaction Date', 'Posted Date', 'Card No.', 'Description', 'Category', 'Debit', 'Credit']
+categories = ['Other Services', 'Merchandise', 'Grocery', 'Dining', 'Other', 'Utilities', 'Phone/Cable', 'Other Travel', 'Health Care', 'Internet', 'Entertainment',]
 
-print("Merchandise:")
-print(df.loc[df['Category'] == 'Merchandise',:])
-
-print("Grocery:")
-print(df.loc[df['Category'] == 'Grocery',:])
-
-print("Dining:")
-print(df.loc[df['Category'] == 'Dining',:])
-
-print("Other:")
-print(df.loc[df['Category'] == 'Other',:])
-
-print("Utilities:")
-print(df.loc[df['Category'] == 'Utilities',:])
-
-print("Phone/Cable:")
-print(df.loc[df['Category'] == 'Phone/Cable',:])
-
-print("Other Travel:")
-print(df.loc[df['Category'] == 'Other Travel',:])
-
-print("Healthcare:")
-print(df.loc[df['Category'] == 'Health Care',:])
-
-print("Internet:")
-print(df.loc[df['Category'] == 'Internet',:])
-
-print("Entertainment:")
-print(df.loc[df['Category'] == 'Entertainment',:])
+filtered_category = []
+for i in categories:
+    filtered_category.append(df.loc[df['Category'] == i,:])
+    print(df.loc[df['Category'] == i,:])
+    category_sum = df.loc[df['Category'] == i,'Debit'].sum() - df.loc[df['Category'] == i,'Credit'].sum()
+    print(i, "Sum:", format(category_sum, ".2f"))
 
 
-
-int 
-other_services_total = 0
-merchandise_total = 0
-grocery_total = 0
-dining_total = 0
-other_total = 0
-utilities_total = 0
-phone_total = 0
-other_travel_total = 0
-healthcare_total = 0
-gas_total = 0
-internet_total = 0
-entertainment_total = 0
-total = 0
-
+df_new = pd.concat(filtered_category)
+df_new.to_csv("output.csv")
