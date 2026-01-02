@@ -1,8 +1,8 @@
 
 import pandas as pd
-df = pd.read_csv('2025-12-21_transaction_download.csv')
 
-category = df.Category
+csv_path = input("Enter Capital One CSV filename or path: ").strip()
+df = pd.read_csv(csv_path)
 
 columns1 = ['Transaction Date', 'Posted Date', 'Card No.', 'Description', 'Category', 'Debit', 'Credit']
 categories = ['Other Services', 'Merchandise', 'Grocery', 'Dining', 'Other', 'Utilities', 'Phone/Cable', 'Other Travel', 'Health Care', 'Internet', 'Entertainment',]
