@@ -1,2 +1,2 @@
 # Transaction-Data-Cleaning-and-Analysis
-Transaction Data Cleaning and Analysis is a Python project that cleans and organizes credit card transaction CSV files and summarizes spending patterns. It standardizes merchant names, prepares data for analysis, and generates simple charts to better understand how transactions are categorized and recorded.
+A simple Python script that loads a Capital One credit card transaction CSV, filters transactions by predefined categories, prints each category’s transactions with net totals (debit minus credit), and exports the filtered results to a new CSV file.
